@@ -6,11 +6,11 @@ apply: imaging.plan
 
 .PHONY: clean
 clean:
-	git clean -dfx
+	rm imaging.plan
 
 .PHONY: destroy
 destroy:
-	terraform destroy -force
+	terraform destroy
 
 imaging.plan: imaging.tf
 	terraform plan -out $@

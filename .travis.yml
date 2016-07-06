@@ -3,7 +3,10 @@ before_install:
   - mkdir ./terraform
   - unzip ./terraform_*_linux_amd64.zip -d ./terraform
   - export PATH=$PATH:./terraform
+branches:
+  only:
+    - master
 env:
   secure: cq1udFkw1OTkw+KPVcM1sUFDxT7K19GFH8C+WhSLlHPUbe7I70DrqrlzofzYBqF2k54PRs3m4CoSRWdimfCntMJldY39iAeJTqs/GzjOWz8B85H454qkelt9E0+Gj8KGVa9SPkY639oHmc6GOkYQcHJ/iVw89y6t7dQedhsngY7t5BtdkNP/MGvlaQUt9dKrlLkoyhYilfrmBF+dLTZWfB0pbuL9zE4PIK1EUPEzxDLeQ382qW7MQ7me+5gsG+2wCBCObsylfGeluEq9WZDTJ2yxZgQxNjun8/syx/ywBMWceuImN6J0I4e7DNkjvF2oXizAfazwINoAYKo+HSFTrd+c4Vg6oOi6lc+3l6KOcUPZufmBhQJ1jFwCkxOaoc0Enpi/fBzZ6aMgjZNgvGrhMkDJo6tofn2k07V9u/HUxazaY2d6wCgmDPtDWzEXUh4cCNKMt4NAbhLnncAsGLaRKU9+QOf2mEMO2nkb+H5z5oX+uOLySIPDpyjqHVyOv5FdiQrNmlZJ82vfq9mVIA89heuaaBWxXUCrsN+iT4XgWzzJ4E1LBUuRVZ2V68VTV3VYO6xdxPQYn9r8AFA4071nA8pRckrYMUcXXQ/ai62v5P68Zntld6dxBSi6Ptl3bJridv4/HWpfALeb3OktROApmJbQfOT2HJBvycf7tVnhx3M=
 script:
-  - make
+  - make apply

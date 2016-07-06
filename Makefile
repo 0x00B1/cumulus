@@ -1,12 +1,12 @@
-.DEFAULT_GOAL := default
+.DEFAULT_GOAL := imaging.plan
+
+.PHONY: apply
+apply: imaging.plan
+	terraform apply $<
 
 .PHONY: clean
-clean: destroy
-	rm imaging.plan terraform.tfstate.backup
-
-.PHONY: default
-default: imaging.plan
-	terraform apply $<
+clean:
+	git clean -dfx
 
 .PHONY: destroy
 destroy:

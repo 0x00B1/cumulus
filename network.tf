@@ -12,6 +12,7 @@ resource "aws_eip" "gateway" {
 
 resource "aws_instance" "bastion" {
   ami = "ami-fce3c696"
+  associate_public_ip_address = true
   disable_api_termination = true
   key_name = "allen.goodman@icloud.com"
   instance_type = "t1.micro"

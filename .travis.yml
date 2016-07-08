@@ -1,7 +1,4 @@
 before_install:
-  - wget https://releases.hashicorp.com/terraform/0.6.16/terraform_0.6.16_linux_amd64.zip
-  - mkdir ./terraform
-  - unzip ./terraform_*_linux_amd64.zip -d ./terraform
   - export PATH=$PATH:./terraform
 branches:
   only:

@@ -1,9 +1,9 @@
 before_install:
-  - openssl aes-256-cbc -K $encrypted_191efaee1147_key -iv $encrypted_191efaee1147_iv -in terraform.tfvars.enc -out terraform.tfvars -d
-  - wget https://releases.hashicorp.com/terraform/0.6.16/terraform_0.6.16_linux_amd64.zip
-  - mkdir ./terraform
-  - unzip ./terraform_*_linux_amd64.zip -d ./terraform
-  - export PATH=$PATH:./terraform
+- openssl aes-256-cbc -K $encrypted_191efaee1147_key -iv $encrypted_191efaee1147_iv -in terraform.tfvars.enc -out terraform.tfvars -d
+- wget https://releases.hashicorp.com/terraform/0.6.16/terraform_0.6.16_linux_amd64.zip
+- mkdir ./terraform
+- unzip ./terraform_*_linux_amd64.zip -d ./terraform
+- export PATH=$PATH:./terraform
 branches:
   only:
   - master

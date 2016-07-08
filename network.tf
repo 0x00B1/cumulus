@@ -10,6 +10,20 @@ resource "aws_eip" "gateway" {
   vpc = true
 }
 
+resource "aws_instance" "bastion" {
+  ami = "ami-fce3c696"
+  disable_api_termination = true
+  key_name = "allen.goodman@icloud.com"
+  instance_type = "t1.micro"
+  subnet_id = "${aws_subnet.public-us-east-1a.id}"
+  tags {
+      Name = "bastion"
+  }
+  vpc_security_group_ids = [
+    "${aws_security_group.SSH.id}"
+  ]
+}
+
 resource "aws_internet_gateway" "primary" {
   tags {
     Name = "primary"

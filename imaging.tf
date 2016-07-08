@@ -7,7 +7,7 @@ provider "aws" {
 resource "terraform_remote_state" "remote_state" {
     backend = "s3"
     config {
-        bucket = "imaging-platform-terraform-state-prod"
+        bucket = "imaging-platform-terraform-state-production"
         key = "terraform.tfstate"
         region = "${var.region}"
         access_key = "${var.access_key}"

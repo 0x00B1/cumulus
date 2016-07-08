@@ -1,19 +1,16 @@
-.DEFAULT_GOAL := imaging.plan
+.DEFAULT_GOAL := apply
 
 .PHONY: apply
-apply: imaging.plan remote
-	terraform apply $<
+apply: remote
+	terraform apply
 
 .PHONY: clean
 clean:
-	rm imaging.plan
+	rm -rf .terraform
 
 .PHONY: destroy
 destroy:
 	terraform destroy
-
-imaging.plan: imaging.tf
-	terraform plan -out $@
 
 .PHONY: remote
 remote:

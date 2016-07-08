@@ -1,7 +1,5 @@
 provider "aws" {
-  region = "us-east-1"
-}
-
-resource "aws_vpc" "imaging" {
-    cidr_block = "10.0.0.0/16"
+  access_key = "${var.access_key}"
+  region = "${var.region}"
+  secret_key = "${var.secret_key}"
 }

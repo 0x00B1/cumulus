@@ -6,11 +6,38 @@ resource "aws_vpc" "imaging" {
   }
 }
 
+resource "aws_eip" "gateway" {
+  vpc = true
+}
+
+resource "aws_instance" "bastion" {
+  ami = "ami-fce3c696"
+  associate_public_ip_address = true
+  disable_api_termination = true
+  key_name = "allen.goodman@icloud.com"
+  instance_type = "t2.nano"
+  subnet_id = "${aws_subnet.public-us-east-1a.id}"
+  tags {
+      Name = "bastion"
+  }
+  vpc_security_group_ids = [
+    "${aws_security_group.SSH.id}"
+  ]
+}
+
 resource "aws_internet_gateway" "primary" {
   tags {
     Name = "primary"
   }
   vpc_id = "${aws_vpc.imaging.id}"
+}
+
+resource "aws_nat_gateway" "primary" {
+  allocation_id = "${aws_eip.gateway.id}"
+  depends_on = [
+    "aws_internet_gateway.primary"
+  ]
+  subnet_id = "${aws_subnet.public-us-east-1a.id}"
 }
 
 resource "aws_subnet" "public-us-east-1a" {

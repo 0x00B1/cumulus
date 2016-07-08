@@ -10,5 +10,7 @@ resource "terraform_remote_state" "remote_state" {
         bucket = "imaging-platform-terraform-state-prod"
         key = "terraform.tfstate"
         region = "${var.region}"
+        access_key = "${var.access_key}"
+        secret_key = "${var.secret_key}"
     }
 }

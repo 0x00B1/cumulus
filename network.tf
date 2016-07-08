@@ -42,8 +42,8 @@ resource "aws_nat_gateway" "primary" {
 
 resource "aws_route_table" "public" {
     route {
-        cidr_block = "0.0.0.0/16"
-        gateway_id = "${aws_internet_gateway.primary.id}"
+      cidr_block = "0.0.0.0/16"
+      gateway_id = "${aws_internet_gateway.primary.id}"
     }
     tags {
         Name = "public"

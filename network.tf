@@ -15,7 +15,7 @@ resource "aws_instance" "bastion" {
   associate_public_ip_address = true
   disable_api_termination = true
   key_name = "allen.goodman@icloud.com"
-  instance_type = "t1.micro"
+  instance_type = "t2.nano"
   subnet_id = "${aws_subnet.public-us-east-1a.id}"
   tags {
       Name = "bastion"

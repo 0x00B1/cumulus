@@ -94,13 +94,3 @@ resource "aws_subnet" "private-us-east-1d" {
   }
   vpc_id = "${aws_vpc.imaging.id}"
 }
-
-resource "aws_route_table_association" "public-us-east-1a" {
-  route_table_id = "${aws_vpc.imaging.main_route_table_id}"
-  subnet_id = "${aws_subnet.public-us-east-1a.id}"
-}
-
-resource "aws_route_table_association" "public-us-east-1b" {
-  route_table_id = "${aws_vpc.imaging.main_route_table_id}"
-  subnet_id = "${aws_subnet.public-us-east-1b.id}"
-}

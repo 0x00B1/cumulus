@@ -6,11 +6,23 @@ resource "aws_vpc" "imaging" {
   }
 }
 
+resource "aws_eip" "gateway" {
+  vpc = true
+}
+
 resource "aws_internet_gateway" "primary" {
   tags {
     Name = "primary"
   }
   vpc_id = "${aws_vpc.imaging.id}"
+}
+
+resource "aws_nat_gateway" "primary" {
+  allocation_id = "${aws_eip.gateway.id}"
+  depends_on = [
+    "aws_internet_gateway.primary"
+  ]
+  subnet_id = "${aws_subnet.public-us-east-1a.id}"
 }
 
 resource "aws_subnet" "public-us-east-1a" {

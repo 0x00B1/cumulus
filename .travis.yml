@@ -1,11 +1,14 @@
 before_install:
-- openssl aes-256-cbc -K $encrypted_191efaee1147_key -iv $encrypted_191efaee1147_iv -in terraform.tfvars.enc -out terraform.tfvars -d
-- wget https://releases.hashicorp.com/terraform/0.6.16/terraform_0.6.16_linux_amd64.zip
-- mkdir ./terraform
-- unzip ./terraform_*_linux_amd64.zip -d ./terraform
-- export PATH=$PATH:./terraform
+  - openssl aes-256-cbc -K $encrypted_191efaee1147_key -iv $encrypted_191efaee1147_iv -in terraform.tfvars.enc -out terraform.tfvars -d
+  - wget https://releases.hashicorp.com/terraform/0.6.16/terraform_0.6.16_linux_amd64.zip
+  - mkdir ./terraform
+  - unzip ./terraform_*_linux_amd64.zip -d ./terraform
+  - export PATH=$PATH:./terraform
 branches:
   only:
-  - master
+    - master
 script:
-- make apply
+  - make apply
+env:
+  global:
+    secure: vl6pICMBd5mcEdqdWnuYY23RBGSASTu/bQCfSFuaYOj78SkNk58ci99OYFJOntWG+AXaFTfxMDChx/oQLgtImmaGL/prMTpTNfvR1CGWjVfM4juj4SMqClALjbLGP5l2uikPMs8eBZ926kjBYX2W+5BrSgS06InrO2fcjlyfSpren9HMCD7XINlKUzSBqYbE7k2MDl3G9mwOHwhYk4U8htq1RRdpev+Wznze4fM/dGcURKISEPMog1KNOOczIP5zcdkU06MXAvLVhyQAWoQnXrhUPCjZnfTnBWSgRincuXXhlkq/8Ubg2L0B/j1+s60l1RmkxDcww1xRyWSnYS8I9vRFSxgHn4PKn5D8tWN0MOKTd6bveqRlD623BTrkl7kqWsxpZsCCwaIY0fegq9qHHnBfKmKtxeyGrMSZeHDzby1tx+Xlw585/IF6LJdXHrid18qrdQfcDxjjeDzsf/ATLDGbuMD1AvS+hOZL93oMzEhxZiSrrRmRyhZtHCXDIauOGEielyUoQEEK15okB/lj8+T7Y+32PeKFYICwVTHv8JBJIp3l5MqpHH+f178MQ0offPS4SfPJ3ETXas4OlLctTpQA8d1mkBjF/U4QjHjB++vTKSuw4GtgTH4MfFKQ0UjMIJZToluZIVXTiR8Z/BrfAty+zTwO3kcCZ1AP93nh1DA=

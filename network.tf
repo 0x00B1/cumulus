@@ -39,22 +39,22 @@ resource "aws_subnet" "public-us-east-1b" {
   vpc_id = "${aws_vpc.imaging.id}"
 }
 
-resource "aws_subnet" "public-us-east-1c" {
-  availability_zone = "us-east-1c"
+resource "aws_subnet" "public-us-east-1d" {
+  availability_zone = "us-east-1d"
   cidr_block = "10.0.3.0/24"
   map_public_ip_on_launch = true
   tags {
-    Name = "imaging-public-us-east-1c"
+    Name = "imaging-public-us-east-1d"
   }
   vpc_id = "${aws_vpc.imaging.id}"
 }
 
-resource "aws_subnet" "public-us-east-1d" {
-  availability_zone = "us-east-1d"
+resource "aws_subnet" "public-us-east-1e" {
+  availability_zone = "us-east-1e"
   cidr_block = "10.0.4.0/24"
   map_public_ip_on_launch = true
   tags {
-    Name = "imaging-public-us-east-1d"
+    Name = "imaging-public-us-east-1e"
   }
   vpc_id = "${aws_vpc.imaging.id}"
 }
@@ -77,20 +77,20 @@ resource "aws_subnet" "private-us-east-1b" {
   vpc_id = "${aws_vpc.imaging.id}"
 }
 
-resource "aws_subnet" "private-us-east-1c" {
-  availability_zone = "us-east-1c"
+resource "aws_subnet" "private-us-east-1d" {
+  availability_zone = "us-east-1d"
   cidr_block = "10.0.7.0/24"
   tags {
-    Name = "imaging-private-us-east-1c"
+    Name = "imaging-private-us-east-1d"
   }
   vpc_id = "${aws_vpc.imaging.id}"
 }
 
-resource "aws_subnet" "private-us-east-1d" {
-  availability_zone = "us-east-1d"
+resource "aws_subnet" "private-us-east-1e" {
+  availability_zone = "us-east-1e"
   cidr_block = "10.0.8.0/24"
   tags {
-    Name = "imaging-private-us-east-1d"
+    Name = "imaging-private-us-east-1e"
   }
   vpc_id = "${aws_vpc.imaging.id}"
 }

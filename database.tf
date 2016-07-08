@@ -1,3 +1,20 @@
+resource "aws_db_instance" "primary" {
+  allocated_storage = 1000
+  apply_immediately = true
+  db_subnet_group_name = "${aws_db_subnet_group.primary.id}"
+  engine = "mysql"
+  instance_class = "db.m4.large"
+  password = "pEC2iZK28t2822L8"
+  publicly_accessible = true
+  tags {
+    Name = "primary"
+  }
+  username = "imaging"
+  vpc_security_group_ids = [
+    "${aws_security_group.MySQL.id}"
+  ]
+}
+
 resource "aws_db_subnet_group" "primary" {
   description = "primary"
   name = "primary"

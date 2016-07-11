@@ -10,10 +10,6 @@ resource "aws_eip" "public-us-east-1a" {
   vpc = true
 }
 
-resource "aws_eip" "public-us-east-1b" {
-  vpc = true
-}
-
 resource "aws_eip" "public-us-east-1d" {
   vpc = true
 }

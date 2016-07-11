@@ -5,7 +5,6 @@ resource "aws_db_instance" "primary" {
   engine = "mysql"
   instance_class = "db.m4.large"
   password = "pEC2iZK28t2822L8"
-  publicly_accessible = true
   tags {
     Name = "primary"
   }

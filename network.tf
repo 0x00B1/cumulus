@@ -10,6 +10,10 @@ resource "aws_eip" "public-us-east-1a" {
   vpc = true
 }
 
+resource "aws_eip" "public-us-east-1b" {
+  vpc = true
+}
+
 resource "aws_eip" "public-us-east-1d" {
   vpc = true
 }
@@ -46,6 +50,14 @@ resource "aws_nat_gateway" "public-us-east-1a" {
     "aws_internet_gateway.primary"
   ]
   subnet_id = "${aws_subnet.public-us-east-1a.id}"
+}
+
+resource "aws_nat_gateway" "public-us-east-1b" {
+  allocation_id = "${aws_eip.public-us-east-1b.id}"
+  depends_on = [
+    "aws_internet_gateway.primary"
+  ]
+  subnet_id = "${aws_subnet.public-us-east-1b.id}"
 }
 
 resource "aws_nat_gateway" "public-us-east-1d" {

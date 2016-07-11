@@ -6,7 +6,19 @@ resource "aws_vpc" "imaging" {
   }
 }
 
-resource "aws_eip" "gateway" {
+resource "aws_eip" "public-us-east-1a" {
+  vpc = true
+}
+
+resource "aws_eip" "public-us-east-1b" {
+  vpc = true
+}
+
+resource "aws_eip" "public-us-east-1d" {
+  vpc = true
+}
+
+resource "aws_eip" "public-us-east-1e" {
   vpc = true
 }
 
@@ -32,12 +44,36 @@ resource "aws_internet_gateway" "primary" {
   vpc_id = "${aws_vpc.imaging.id}"
 }
 
-resource "aws_nat_gateway" "primary" {
-  allocation_id = "${aws_eip.gateway.id}"
+resource "aws_nat_gateway" "public-us-east-1a" {
+  allocation_id = "${aws_eip.public-us-east-1a.id}"
   depends_on = [
     "aws_internet_gateway.primary"
   ]
   subnet_id = "${aws_subnet.public-us-east-1a.id}"
+}
+
+resource "aws_nat_gateway" "public-us-east-1b" {
+  allocation_id = "${aws_eip.public-us-east-1b.id}"
+  depends_on = [
+    "aws_internet_gateway.primary"
+  ]
+  subnet_id = "${aws_subnet.public-us-east-1b.id}"
+}
+
+resource "aws_nat_gateway" "public-us-east-1d" {
+  allocation_id = "${aws_eip.public-us-east-1d.id}"
+  depends_on = [
+    "aws_internet_gateway.primary"
+  ]
+  subnet_id = "${aws_subnet.public-us-east-1d.id}"
+}
+
+resource "aws_nat_gateway" "public-us-east-1e" {
+  allocation_id = "${aws_eip.public-us-east-1e.id}"
+  depends_on = [
+    "aws_internet_gateway.primary"
+  ]
+  subnet_id = "${aws_subnet.public-us-east-1e.id}"
 }
 
 resource "aws_subnet" "public-us-east-1a" {
